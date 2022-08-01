@@ -1,0 +1,26 @@
+$bgTransparent:rgba(36,186,239,.3) ;
+$fontColor:#fff;
+$secondFontColor:#949cb0;
+$lightBgColor:#24baef;
+.navBg{
+    background-color: $bgTransparent;
+}
+
+.linkColor{
+    color:$fontColor !important;
+    transition: all 0.5s;
+}
+.active{
+    color: $lightBgColor;
+}
+.linkColor:hover{
+    color: $lightBgColor !important;
+}
+.toggler{
+    background-image: unset !important;
+}
+.togglerFocus:focus{
+    box-shadow: 0 0 0 0 !important;
+    line-height: unset !important;
+   
+}

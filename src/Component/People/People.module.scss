@@ -1,0 +1,21 @@
+
+.layer{
+    position:absolute;
+    inset: 0;
+    background-color: rgba(0,0,0,0.5);
+    opacity: 0;
+    transition: all 0.5s;
+}
+.group{
+    overflow: hidden;
+}
+.group:hover .layer{
+    opacity: 1;
+}
+img{
+    transition:all 0.5s;
+}
+.group:hover img{
+    transform: scale(1.2)  rotate(5deg);
+   
+}
