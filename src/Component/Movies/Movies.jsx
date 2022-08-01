@@ -55,8 +55,8 @@ export default function Movies() {
       </div>
 
     <nav aria-label="Page navigation example" className='py-4'>
-  <ul class="pagination d-flex justify-content-center">
-      {nums.map((pageNum)=><li key={pageNum} onClick={()=>getTrending(pageNum)} class="page-item"><a class="page-link bg-transparent text-white">{pageNum}</a></li>)}
+  <ul className="pagination d-flex justify-content-center">
+      {nums.map((pageNum)=><li key={pageNum} onClick={()=>getTrending(pageNum)} className="page-item"><a className="page-link bg-transparent text-white">{pageNum}</a></li>)}
   </ul>
 </nav>
     </>

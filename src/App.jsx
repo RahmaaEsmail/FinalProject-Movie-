@@ -25,25 +25,26 @@ function App() {
     let encodedData=localStorage.getItem('userToken');
     let decodedData=jwtDecode(encodedData);
     setUserData(decodedData)
+    console.log(decodedData);
    }
 
    useEffect(() => {
-     if(localStorage.getItem('userToken') != null)
+     if(localStorage.getItem('userToken'))
      {
       saveData()
      }
    }, [])
    
-   let navigate=useNavigate();
+    let navigate=useNavigate();
 
    function logOut()
    {
-    localStorage.clear();
     setUserData(null);
+    localStorage.removeItem('userToken');
     navigate('/login')
    }
 
-   function ProtectedData(props)
+   function ProtectedRoute(props)
    {
     if(localStorage.getItem('userToken')==null)
     {
@@ -56,23 +57,38 @@ function App() {
 
   return (
     <>
-    {/* userData={userData} logout={logOut} 
+    {/* userData={userData}  
      saveData={saveData}
     */}
-    <Navbar userData={userData} logout={logOut} />
+    <Navbar userData={userData} logout={logOut}/>
     <Routes>
-      <Route path='/' element={<ProtectedData><Home/></ProtectedData>}></Route>
-      <Route path='home' element={<ProtectedData><Home/></ProtectedData>}></Route>
-      <Route path='movies' element={<ProtectedData><Movies/></ProtectedData>}></Route>
-      <Route path='moviedetails' element={<ProtectedData><MovieDetails/></ProtectedData>}></Route>
-      <Route path='people' element={<ProtectedData><People/></ProtectedData>}></Route>
-      <Route path='peopledetails' element={<ProtectedData><PeopleDetails/></ProtectedData>}></Route>
-      <Route path='tvshows' element={<ProtectedData><Tvshows/></ProtectedData>}></Route>
-      <Route path='tvshowdetails' element={<ProtectedData><TvshowDetails/></ProtectedData>}></Route>
+      <Route path='/' element={<ProtectedRoute><Home/></ProtectedRoute>}></Route>
+      <Route path='home' element={<ProtectedRoute><Home/></ProtectedRoute>}></Route>
+      <Route path='movies' element={<ProtectedRoute><Movies/></ProtectedRoute>}></Route>
+      <Route path='moviedetails' element={<ProtectedRoute><MovieDetails/></ProtectedRoute>}></Route>
+      <Route path='people' element={<ProtectedRoute><People/></ProtectedRoute>}></Route>
+      <Route path='peopledetails' element={<ProtectedRoute><PeopleDetails/></ProtectedRoute>}></Route>
+      <Route path='tvshows' element={<ProtectedRoute><Tvshows/></ProtectedRoute>}></Route>
+      <Route path='tvshowdetails' element={<ProtectedRoute><TvshowDetails/></ProtectedRoute>}></Route>
       <Route path='login' element={<Login saveData={saveData}/>}></Route>
       <Route path='register' element={<Register/>}></Route>
       <Route path='*' element={<Notfound/>}></Route>
     </Routes>
+
+
+{/* <Routes>
+      <Route path='/' element={<Home/>}></Route>
+      <Route path='home' element={<Home/>}></Route>
+      <Route path='movies' element={<Movies/>}></Route>
+      <Route path='moviedetails' element={<MovieDetails/>}></Route>
+      <Route path='people' element={<People/>}></Route>
+      <Route path='peopledetails' element={<PeopleDetails/>}></Route>
+      <Route path='tvshows' element={<Tvshows/>}></Route>
+      <Route path='tvshowdetails' element={<TvshowDetails/>}></Route>
+      <Route path='login' element={<Login saveData={saveData}/>}></Route>
+      <Route path='register' element={<Register/>}></Route>
+      <Route path='*' element={<Notfound/>}></Route>
+    </Routes> */}
     <Footer/>
     </>
   );

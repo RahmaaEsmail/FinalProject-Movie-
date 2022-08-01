@@ -32,10 +32,10 @@ export default function Login(props) {
     }
     else{
       let {data}=await axios.post('https://routeegypt.herokuapp.com/signin',user)
-      localStorage.setItem('userToken',data.token)
-      props.saveData();
       if(data.message=='success')
       {
+        localStorage.setItem('userToken',data.token)
+        props.saveData();
         goToHome()
       }
       else{

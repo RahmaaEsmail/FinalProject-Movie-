@@ -16,7 +16,9 @@ export default function Navbar(props) {
       </span>
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      {props.userData?<ul className="navbar-nav me-auto mb-2 mb-lg-0"> 
+    <ul className="navbar-nav me-auto mb-2 mb-lg-0"> 
+      {props.userData?
+      <>
         <li className="nav-item">
         
           <Link className={`nav-link ${style.linkColor}`}  to='home'>Home</Link>
@@ -30,8 +32,8 @@ export default function Navbar(props) {
         <li className="nav-item">
           <Link className={`nav-link ${style.linkColor}`} to='people'>People</Link>
         </li>
-      </ul>:''}
-      
+      </>:''}
+      </ul>
 
        
        
